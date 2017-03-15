@@ -1,0 +1,5 @@
+---
+keycloak_name: keycloak-{{keycloak_ver}}
+keycloak_tgz: '{{keycloak_name}}.tar.gz'
+# https://downloads.jboss.org/keycloak/2.5.5.Final/keycloak-2.5.5.Final.tar.gz
+keycloak_tgz_url: '{{keycloak_mirror}}/{{keycloak_ver}}/{{keycloak_tgz}}'

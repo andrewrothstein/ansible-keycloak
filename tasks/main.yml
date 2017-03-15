@@ -1,0 +1,33 @@
+---
+- name: download tgz
+  become: yes
+  become_user: root
+  get_url:
+    url: '{{keycloak_tgz_url}}'
+    dest: /tmp/{{keycloak_tgz}}
+    mode: 0644
+
+- name: unarchive
+  become: yes
+  become_user: root
+  unarchive:
+    copy: no
+    src: /tmp/{{keycloak_tgz}}
+    dest: '{{keycloak_parent_install_dir}}'
+    creates: '{{keycloak_parent_install_dir}}/{{keycloak_name}}'
+
+- name: link
+  become: yes
+  become_user: root
+  file:
+    src: '{{keycloak_parent_install_dir}}/{{keycloak_name}}'
+    dest: '{{keycloak_parent_install_dir}}/keycloak'
+    state: link
+
+- name: add to path
+  become: yes
+  become_user: root
+  template:
+    src: keycloak.sh.j2
+    dest: /etc/profile.d/keycloak.sh
+    mode: 0644
