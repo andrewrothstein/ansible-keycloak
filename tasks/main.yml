@@ -11,7 +11,7 @@
   become: yes
   become_user: root
   unarchive:
-    remote_src: no
+    remote_src: yes
     src: /tmp/{{keycloak_tgz}}
     dest: '{{keycloak_parent_install_dir}}'
     creates: '{{keycloak_parent_install_dir}}/{{keycloak_name}}'
