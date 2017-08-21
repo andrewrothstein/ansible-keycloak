@@ -1,5 +1,5 @@
 ---
-keycloak_ver: '2.5.5.Final'
+keycloak_ver: '3.2.1.Final'
 keycloak_mirror: https://downloads.jboss.org/keycloak
 keycloak_parent_install_dir: /usr/local
 

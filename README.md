@@ -1,6 +1,6 @@
-[![CircleCI](https://circleci.com/gh/andrewrothstein/ansible-wildfly.svg?style=svg)](https://circleci.com/gh/andrewrothstein/ansible-wildfly)
 andrewrothstein.keycloak
 =========
+[![Build Status](https://travis-ci.org/andrewrothstein/ansible-keycloak.svg?branch=master)](https://travis-ci.org/andrewrothstein/ansible-keycloak)
 
 Installs [KeyCloak](http://www.keycloak.org/)
 
