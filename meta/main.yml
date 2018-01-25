@@ -24,6 +24,6 @@ dependencies:
   - role: andrewrothstein.unarchive-deps
     version: v1.0.9
   - role: andrewrothstein.java-oracle-jre
-    version: v2.0.3
+    version: v2.0.5
 
   
