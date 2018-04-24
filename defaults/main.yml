@@ -1,5 +1,12 @@
 ---
-keycloak_ver: '3.2.1.Final'
+keycloak_ver: '3.4.3.Final'
 keycloak_mirror: https://downloads.jboss.org/keycloak
+
+keyclock_checksums:
+  # https://downloads.jboss.org/keycloak/3.2.1.Final/keycloak-3.2.1.Final.tar.gz.sha1
+  '3.2.1.Final': sha1:de6d7ac62e2a82c7ecdfcf04c9970163415d9b75
+  # https://downloads.jboss.org/keycloak/3.4.3.Final/keycloak-3.4.3.Final.tar.gz.sha1
+  '3.4.3.Final': sha1:f2b1272ab8d4413f408b444bc2108740845bc976
+
 keycloak_parent_install_dir: /usr/local
 
