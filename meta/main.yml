@@ -18,12 +18,12 @@ galaxy_info:
         - all
   galaxy_tags:
     - sso
-    - key-management
-
+    - secret
+    - key
 dependencies:
   - role: andrewrothstein.unarchive-deps
-    version: v1.0.9
+    version: v1.0.10
   - role: andrewrothstein.java-oracle-jre
-    version: v2.0.8
+    version: v2.0.9
 
   
