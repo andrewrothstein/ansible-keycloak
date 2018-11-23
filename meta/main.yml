@@ -25,5 +25,3 @@ dependencies:
     version: v1.0.10
   - role: andrewrothstein.java-oracle-jre
     version: v2.1.0
-
-  
