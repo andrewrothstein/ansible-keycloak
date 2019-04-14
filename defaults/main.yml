@@ -1,5 +1,5 @@
 ---
-keycloak_ver: '4.8.3.Final'
+keycloak_ver: '5.0.0'
 keycloak_mirror: https://downloads.jboss.org/keycloak
 
 keycloak_checksums:
@@ -15,5 +15,7 @@ keycloak_checksums:
   '4.7.0.Final': sha1:abb81b88ab762d58cb9d9c20948649265acfc356
   # https://downloads.jboss.org/keycloak/4.8.3.Final/keycloak-4.8.3.Final.tar.gz.sha1
   '4.8.3.Final': sha1:16abcbeb6a76f46a985eff66d69a326ca9a64a54
+  # https://downloads.jboss.org/keycloak/5.0.0/keycloak-5.0.0.tar.gz.sha1
+  '5.0.0': sha1:45848b55c36c8df3cbfeb156c7e4a71b61c4674a
 
 keycloak_parent_install_dir: /usr/local
