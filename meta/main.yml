@@ -2,7 +2,8 @@ dependencies:
 - role: andrewrothstein.unarchive-deps
   version: v1.1.0
 - role: andrewrothstein.openjdk
-  version: v1.0.0
+  version: v2.0.1
+  openjdk_app: jre
 galaxy_info:
   author: Andrew Rothstein
   company: BlackRock
