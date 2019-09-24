@@ -1,8 +1,8 @@
 dependencies:
 - role: andrewrothstein.unarchive-deps
-  version: v1.1.0
+  version: v1.1.1
 - role: andrewrothstein.openjdk
-  version: v2.0.1
+  version: v2.0.2
   openjdk_app: jre
 galaxy_info:
   author: Andrew Rothstein
