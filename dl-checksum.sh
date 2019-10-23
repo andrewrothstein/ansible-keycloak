@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
-VER=7.0.0
+VER=${1:-7.0.1}
 DIR=~/Downloads
 MIRROR=https://downloads.jboss.org/keycloak/${VER}
 URL=$MIRROR/keycloak-${VER}.tar.gz.sha1

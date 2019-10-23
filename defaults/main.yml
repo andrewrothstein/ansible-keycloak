@@ -1,6 +1,8 @@
 ---
-keycloak_ver: '7.0.0'
+keycloak_ver: '7.0.1'
 keycloak_mirror: https://downloads.jboss.org/keycloak
+
+keycloak_parent_install_dir: /usr/local
 
 keycloak_checksums:
   # https://downloads.jboss.org/keycloak/3.2.1.Final/keycloak-3.2.1.Final.tar.gz.sha1
@@ -21,5 +23,5 @@ keycloak_checksums:
   '6.0.1': sha1:472b37ccc9b5bb3119295c2880db49aada2fe9ed
   # https://downloads.jboss.org/keycloak/7.0.0/keycloak-7.0.0.tar.gz.sha1
   '7.0.0': sha1:0b55ca857682928968efaf64b75dbe0c16b7644c
-
-keycloak_parent_install_dir: /usr/local
+  # https://downloads.jboss.org/keycloak/7.0.1/keycloak-7.0.1.tar.gz.sha1
+  '7.0.1': sha1:eb2213cf652c08a61a756e32343a138e13a31c95
