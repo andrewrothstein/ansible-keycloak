@@ -1,8 +1,13 @@
 #!/usr/bin/env sh
-VER=${1:-7.0.1}
 DIR=~/Downloads
-MIRROR=https://downloads.jboss.org/keycloak/${VER}
-URL=$MIRROR/keycloak-${VER}.tar.gz.sha1
+MIRROR=https://downloads.jboss.org/keycloak
 
-printf "  # %s\n" $URL
-printf "  '%s': sha1:%s\n" $VER $(curl -sSL $URL)
+dl_ver() {
+    local ver=$1
+    local url=$MIRROR/$ver/keycloak-${ver}.tar.gz.sha1
+
+    printf "  # %s\n" $url
+    printf "  '%s': sha1:%s\n" $ver $(curl -sSL $url)
+}
+
+dl_ver ${1:-8.0.0}
