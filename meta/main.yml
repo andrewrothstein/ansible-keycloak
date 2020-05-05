@@ -1,9 +1,11 @@
 dependencies:
-- role: andrewrothstein.unarchive-deps
-  version: v1.1.2
-- openjdk_app: jre
-  role: andrewrothstein.openjdk
-  version: v2.0.4
+- role: openjdk
+  java_packages: "{{ keycloak_java_packages }}"
+  become: true
+  become_user: "root"
+  tags:
+    - java
+
 galaxy_info:
   author: Andrew Rothstein
   company: BlackRock

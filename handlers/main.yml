@@ -1,2 +1,4 @@
 ---
-# handlers file for keycloak
+- name: reload systemd
+  sudo: yes
+  command: systemctl daemon-reload
