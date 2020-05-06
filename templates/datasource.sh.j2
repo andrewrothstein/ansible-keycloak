@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+read -d '' template << EOF
+		<datasources>
+			<datasource jndi-name="java:jboss/datasources/ExampleDS" pool-name="ExampleDS" enabled="true" use-java-context="true" statistics-enabled="false">
+                    <connection-url>jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE</connection-url>
+                    <driver>h2</driver>
+                    <security>
+                        <user-name>sa</user-name>
+                        <password>sa</password>
+                    </security>
+                </datasource>
+			<datasource jndi-name="java:jboss/datasources/KeycloakDS" pool-name="KeycloakDS" enabled="true" use-java-context="true">
+				  ​<connection-url>{{ keycloak_postgresql_connection_url }}</connection-url>
+				  ​<driver>postgresql</driver>
+				  ​<pool>
+				      ​<max-pool-size>20</max-pool-size>
+				  ​</pool>
+				  ​<security>
+				      ​<user-name>{{ keycloak_postgresql_user }}</user-name>
+				      ​<password>{{ keycloak_postgresql_password }}</password>
+				  ​</security>
+			  ​</datasource>
+			<drivers>
+			    <driver name="h2" module="com.h2database.h2">
+            		<xa-datasource-class>org.h2.jdbcx.JdbcDataSource</xa-datasource-class>
+                </driver>
+				<driver name="postgresql" module="org.postgresql">
+				     ​<xa-datasource-class>org.postgresql.xa.PGXADataSource</xa-datasource-class>
+				 ​</driver>
+			</drivers>
+		</datasources>
+EOF
+
+awk -v template="$template" 'BEGIN {A = 1};/<datasources>/{A=0; print template };/.*/ { if ( A == 1) print $0};/<\/datasources>/{A=1}; ' {{ keycloak_home }}/standalone/configuration/standalone.xml > {{ keycloak_home }}/standalone/configuration/standalone1.xml
+
+sed -i "s/$(echo -ne '\u200b')//g" {{ keycloak_home }}/standalone/configuration/standalone1.xml
+
+mv {{ keycloak_home }}/standalone/configuration/standalone1.xml {{ keycloak_home }}/standalone/configuration/standalone.xml
+chmod 755 {{ keycloak_home }}/standalone/configuration/standalone.xml

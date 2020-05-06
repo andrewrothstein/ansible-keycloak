@@ -8,9 +8,12 @@ keycloak_home: "{{ keycloak_parent_install_dir }}/keycloak"
 keycloak_java_packages: openjdk-11-jre
 
 keycloak_admin_username: admin
-keycloak_admin_password: admin123
 
-keycloak_log_dir: "{{ keycloak_parent_install_dir }}/keycloak/standalone/log"
+keycloak_log_dir: "/var/log/keycloak"
+
+postgresql_driver_jar_mirror: https://jdbc.postgresql.org/download/
+postgresql_driver_jar_name: postgresql-42.2.12.jre6
+keycloak_postgresql_user: "keycloak"
 
 keycloak_checksums:
   # https://downloads.jboss.org/keycloak/3.2.1.Final/keycloak-3.2.1.Final.tar.gz.sha1

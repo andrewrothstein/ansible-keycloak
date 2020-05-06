@@ -6,3 +6,6 @@ keycloak_checksum: '{{ keycloak_checksums[keycloak_ver] }}'
 
 keycloak_install_dir: '{{ keycloak_parent_install_dir }}/{{ keycloak_name }}'
 keycloak_link_dir: '{{ keycloak_parent_install_dir }}/keycloak'
+
+postgresql_module_home: "{{ keycloak_home }}/modules/system/layers/keycloak/org/postgresql/main"
+postgresql_driver_jar_download_url: "{{ postgresql_driver_jar_mirror }}{{ postgresql_driver_jar_name }}.jar"

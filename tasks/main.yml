@@ -8,7 +8,7 @@
   register: keycloak_binary
 - when: not keycloak_binary.stat.exists
   block:
-    - name: download tgz
+    - name: Download keycloak tgz
       become: yes
       become_user: root
       get_url:
@@ -16,6 +16,9 @@
         dest: /tmp/{{ keycloak_tgz }}
         checksum: '{{ keycloak_checksum }}'
         mode: 0644
+        timeout: 60
+      retries: 3
+      delay: 10
     - name: unarchive
       become: yes
       become_user: root
@@ -59,6 +62,17 @@
         state=directory
         recurse=true
 
+- name: keycloak log directory
+  become: yes
+  become_user: root
+  tags:
+  - keyclock
+  file: dest={{ keycloak_log_dir }}
+        mode=755
+        owner=keycloak
+        group=keycloak
+        state=directory
+
 - name: keycloak standalone directory
   become: yes
   become_user: root
@@ -70,6 +84,8 @@
         group=keycloak
         state=directory
         recurse=true
+
+- include_tasks: postgresql.yml
 
 - name: check if admin is already created
   become: yes
@@ -99,7 +115,7 @@
   tags:
     - keycloak
   template:
-       owner=root group=root mode=0644
+      owner=root group=root mode=0644
       src=keycloak.service.j2
       dest=/etc/systemd/system/keycloak.service
   notify:
