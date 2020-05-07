@@ -7,7 +7,7 @@ Type=idle
 Environment=JBOSS_HOME={{ keycloak_parent_install_dir }}/keycloak JBOSS_LOG_DIR={{ keycloak_log_dir }} "JAVA_OPTS=-Xms1024m -Xmx20480m -XX:MaxPermSize=768m"
 User=keycloak
 Group=keycloak
-ExecStart={{ keycloak_parent_install_dir }}/keycloak/bin/standalone.sh -b 0.0.0.0
+ExecStart={{ keycloak_parent_install_dir }}/keycloak/bin/standalone.sh
 TimeoutStartSec=600
 TimeoutStopSec=600
 

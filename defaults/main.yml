@@ -15,6 +15,70 @@ postgresql_driver_jar_mirror: https://jdbc.postgresql.org/download/
 postgresql_driver_jar_name: postgresql-42.2.12.jre6
 keycloak_postgresql_user: "keycloak"
 
+# SSL
+keycloak_ssl_src_dir: "/etc/letsencrypt/live/{{ keycloak_site_name }}"
+keycloak_ssl_cert_file: "fullchain.pem"
+keycloak_ssl_key_file: "privkey.pem"
+keycloak_certs_from_letsencrypt: true
+
+keycloak_http_site: "{{ keycloak_site_name }}-http"
+keycloak_https_site: "{{ keycloak_site_name }}-https"
+
+# Certbot
+keycloak_certbot_site_names: ["{{ keycloak_site_name }}"]
+keycloak_certbot_mail_address: ""
+
+# NGINX
+keycloak_nginx_server_names_hash_bucket_size: 64
+keycloak_nginx_sites:
+  - server:
+      name: "{{ keycloak_http_site }}"
+      __listen: "80;\n  listen [::]:80;\n"
+      server_name: "{{ keycloak_site_name }}"
+      return: "301 https://$server_name$request_uri"
+      ssl:
+        enabled: false
+
+  - server:
+      name:  "{{ keycloak_https_site }}"
+      __listen: "443;\n  listen [::]:443;\n"
+      server_name: "{{ keycloak_site_name }}"
+      client_max_body_size: "{{ keycloak_nginx_max_filesize }}"
+      ssl:
+        enabled: true
+        cert: "{{ keycloak_ssl_cert_file }}"
+        key:  "{{ keycloak_ssl_key_file }}"
+        src_dir: "{{ keycloak_ssl_src_dir }}"
+        conf: "{{ keycloak_site_name }}-ssl.conf"
+        remote_src: "{{ keycloak_certs_from_letsencrypt }}"
+        create_symlink: "{{ keycloak_certs_from_letsencrypt }}"
+        access_log_format: "timed_combined"
+
+      location1:
+        name: "/"
+        proxy_pass: "http://localhost:{{ keycloak_http_port }}"
+        proxy_read_timeout: "86400s"
+        proxy_next_upstream: "error timeout invalid_header http_502 http_503 http_504"
+        proxy_set_header:
+          - Host $host
+          - X-Real-IP $remote_addr
+          - X-Forwarded-For $proxy_add_x_forwarded_for
+          - X-Forwarded-Host $server_name
+          - X-Forwarded-Proto https
+          
+keycloak_nginx_log_dir: "/var/log/nginx"
+keycloak_nginx_enabled_sites:
+  - "{{ keycloak_http_site }}"
+  - "{{ keycloak_https_site }}"
+keycloak_nginx_disabled_sites:
+  - default
+keycloak_nginx_access_logs:
+  - name: "timed_combined"
+    format: "'$http_x_forwarded_for - $remote_user [$time_local]  \"$request\" $status $body_bytes_sent \"$http_referer\" \"$http_user_agent\" $request_time $upstream_response_time $gzip_ratio' $request_length"
+    options: null
+    filename: "access.log"
+
+# Cheksums
 keycloak_checksums:
   # https://downloads.jboss.org/keycloak/3.2.1.Final/keycloak-3.2.1.Final.tar.gz.sha1
   '3.2.1.Final': sha1:de6d7ac62e2a82c7ecdfcf04c9970163415d9b75

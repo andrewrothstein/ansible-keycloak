@@ -1,11 +1,12 @@
 ---
-- name: check for existing install
+- name: Check for existing install
   become: yes
   become_user: root
   stat:
     path: '{{ keycloak_install_dir }}'
   changed_when: False
   register: keycloak_binary
+
 - when: not keycloak_binary.stat.exists
   block:
     - name: Download keycloak tgz
@@ -19,7 +20,7 @@
         timeout: 60
       retries: 3
       delay: 10
-    - name: unarchive
+    - name: Unarchive keycloak tgz
       become: yes
       become_user: root
       unarchive:
@@ -28,14 +29,14 @@
         dest: '{{ keycloak_parent_install_dir }}'
         creates: '{{ keycloak_install_dir }}'
   always:
-    - name: cleanup...
+    - name: Cleanup...
       become: yes
       become_user: root
       file:
         path: /tmp/{{ keycloak_tgz }}
         state: absent
 
-- name: link
+- name: Create link
   become: yes
   become_user: root
   file:
@@ -43,14 +44,14 @@
     dest: '{{ keycloak_link_dir }}'
     state: link
 
-- name: create keycloak user
+- name: Create keycloak user
   become: yes
   become_user: root
   tags:
   - keyclock
   user: name=keycloak
 
-- name: keycloak target directory
+- name: Keycloak target directory
   become: yes
   become_user: root
   tags:
@@ -62,7 +63,7 @@
         state=directory
         recurse=true
 
-- name: keycloak log directory
+- name: Keycloak log directory
   become: yes
   become_user: root
   tags:
@@ -73,7 +74,7 @@
         group=keycloak
         state=directory
 
-- name: keycloak standalone directory
+- name: Keycloak standalone directory
   become: yes
   become_user: root
   tags:
@@ -87,7 +88,7 @@
 
 - include_tasks: postgresql.yml
 
-- name: check if admin is already created
+- name: Check if admin is already created
   become: yes
   become_user: root
   stat:
@@ -96,7 +97,7 @@
   register: result
 - when: not result.stat.exists
   block:
-    - name: add admin user
+    - name: Add admin user
       shell: "{{ keycloak_home }}/bin/add-user-keycloak.sh -r master -u {{ keycloak_admin_username }} -p {{ keycloak_admin_password }}"
       become: yes
       become_user: root
@@ -109,7 +110,7 @@
         group=keycloak
         state=touch
 
-- name: keycloak systemd setup
+- name: Keycloak systemd setup
   become: yes
   become_user: root
   tags:
@@ -121,7 +122,7 @@
   notify:
     - reload systemd
 
-- name: keycloak systemd service enable and start
+- name: Keycloak systemd service enable and start
   become: yes
   become_user: root
   tags:

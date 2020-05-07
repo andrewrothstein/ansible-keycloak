@@ -48,7 +48,7 @@
   become_user: keycloak
   command: "{{ keycloak_home }}/standalone/datasource.sh"
 
-- name: cleanup...
+- name: Cleanup...
   become: yes
   become_user: keycloak
   file:

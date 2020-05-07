@@ -6,6 +6,38 @@ dependencies:
   tags:
     - java
 
+- role: onaio.certbot
+  become: true
+  become_user: "root"
+  certbot_create_certs: true
+  certbot_site_names: "{{ keycloak_certbot_site_names }}"
+  certbot_mail_address: "{{ keycloak_certbot_mail_address }}"
+  when: keycloak_certs_from_letsencrypt
+  tags:
+    - certbot
+
+- role: onaio.nginx
+  site_name: "{{ keycloak_site_name }}"
+  nginx_install_method: "package"
+  nginx_sites: "{{ keycloak_nginx_sites }}"
+  nginx_enabled_sites: "{{ keycloak_nginx_enabled_sites }}"
+  nginx_disabled_sites: "{{ keycloak_nginx_disabled_sites }}"
+  nginx_ssl_dir: "{{ nginx_dir }}/ssl/{{ site.server.server_name }}"
+  nginx_server_names_hash_bucket_size: "{{ keycloak_nginx_server_names_hash_bucket_size }}"
+  nginx_log_dir: "{{ keycloak_nginx_log_dir }}"
+  nginx_access_logs: "{{ keycloak_nginx_access_logs }}"
+  become: true
+  become_user: "root"
+  tags:
+    - nginx
+
+- role: collectd
+  collectd_deployed_app_name: "keycloak"
+  collectd_deployed_app_version: "{{ keycloak_ver }}"
+  become: True
+  tags:
+    - collectd
+
 galaxy_info:
   author: Andrew Rothstein
   company: BlackRock
