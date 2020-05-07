@@ -1,5 +1,5 @@
 ---
-- hosts: keycloak-servers
+- hosts: keycloak-app-servers
   remote_user: root
   roles:
     - keycloak

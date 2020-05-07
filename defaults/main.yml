@@ -44,6 +44,7 @@ keycloak_nginx_sites:
       __listen: "443;\n  listen [::]:443;\n"
       server_name: "{{ keycloak_site_name }}"
       client_max_body_size: "{{ keycloak_nginx_max_filesize }}"
+      large_client_header_buffers: "8 64k"
       ssl:
         enabled: true
         cert: "{{ keycloak_ssl_cert_file }}"
@@ -56,7 +57,7 @@ keycloak_nginx_sites:
 
       location1:
         name: "/"
-        proxy_pass: "http://localhost:{{ keycloak_http_port }}"
+        proxy_pass: "https://localhost:{{ keycloak_https_port }}"
         proxy_read_timeout: "86400s"
         proxy_next_upstream: "error timeout invalid_header http_502 http_503 http_504"
         proxy_set_header:
