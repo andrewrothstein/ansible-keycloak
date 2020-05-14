@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=idle
-Environment=JBOSS_HOME={{ keycloak_parent_install_dir }}/keycloak JBOSS_LOG_DIR={{ keycloak_log_dir }} "JAVA_OPTS=-Xms1024m -Xmx20480m -XX:MaxPermSize=768m"
+Environment=JBOSS_HOME={{ keycloak_parent_install_dir }}/keycloak JBOSS_LOG_DIR={{ keycloak_log_dir }} "JAVA_OPTS=-Xms64m -Xmx512m -XX:MetaspaceSize=96M -XX:MaxMetaspaceSize=256m"
 User=keycloak
 Group=keycloak
 ExecStart={{ keycloak_parent_install_dir }}/keycloak/bin/standalone.sh
