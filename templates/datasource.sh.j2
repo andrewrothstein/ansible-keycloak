@@ -28,3 +28,6 @@ sed -i "s/$(echo -ne '\u200b')//g" {{ keycloak_home }}/standalone/configuration/
 
 mv {{ keycloak_home }}/standalone/configuration/standalone1.xml {{ keycloak_home }}/standalone/configuration/standalone.xml
 chmod 755 {{ keycloak_home }}/standalone/configuration/standalone.xml
+
+echo "feature.account_api=enabled" >> {{ keycloak_home }}/standalone/configuration/profile.properties
+chmod 755 {{ keycloak_home }}/standalone/configuration/profile.properties
