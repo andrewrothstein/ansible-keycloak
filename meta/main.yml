@@ -12,7 +12,7 @@ dependencies:
   certbot_create_certs: true
   certbot_site_names: "{{ keycloak_certbot_site_names }}"
   certbot_mail_address: "{{ keycloak_certbot_mail_address }}"
-  when: keycloak_certs_from_letsencrypt
+  when: keycloak_nginx_certs_from_letsencrypt
   tags:
     - certbot
 
