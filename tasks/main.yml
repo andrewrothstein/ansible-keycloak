@@ -57,9 +57,8 @@
   tags:
   - keyclock
   file: dest={{ keycloak_home }}
-        mode=755
-        owner=root
-        group=root
+        owner=keycloak
+        group=keycloak
         state=directory
         recurse=true
 
@@ -69,22 +68,10 @@
   tags:
   - keyclock
   file: dest={{ keycloak_log_dir }}
-        mode=755
+        mode=660
         owner=keycloak
         group=keycloak
         state=directory
-
-- name: Keycloak standalone directory
-  become: yes
-  become_user: root
-  tags:
-  - keyclock
-  file: dest={{ keycloak_home }}/standalone
-        mode=755
-        owner=keycloak
-        group=keycloak
-        state=directory
-        recurse=true
 
 - include_tasks: postgresql.yml
 
@@ -105,9 +92,6 @@
       become: yes
       become_user: root
       file: dest="{{ keycloak_home }}/.admin"
-        mode=755
-        owner=keycloak
-        group=keycloak
         state=touch
 
 - name: Keycloak systemd setup
