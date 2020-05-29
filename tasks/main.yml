@@ -94,23 +94,23 @@
       file: dest="{{ keycloak_home }}/.admin"
         state=touch
 
-- name: Keycloak systemd setup
+- name: Create keycloak service
   become: yes
   become_user: root
-  tags:
-    - keycloak
-  template:
-      owner=root group=root mode=0644
-      src=keycloak.service.j2
-      dest=/etc/systemd/system/keycloak.service
-  notify:
-    - reload systemd
+  import_role:
+    name: robertdebock.service
+  vars:
+    service_list:
+      - name: keycloak
+        description: Keycloak service
+        start_command: "{{ keycloak_home }}/bin/standalone.sh"
+        user_name: keycloak
+        group_name: keycloak
 
-- name: Keycloak systemd service enable and start
+- name: start and enable tomcat instance
   become: yes
   become_user: root
-  tags:
-    - keycloak
-  service: name=keycloak
-           enabled=yes
-           state=started
+  service:
+    name: keycloak
+    state: started
+    enabled: yes
