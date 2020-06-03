@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+read -d '' template << EOF
+		<datasources>
+			<datasource jndi-name="java:jboss/datasources/KeycloakDS" pool-name="KeycloakDS" enabled="true" use-java-context="true">
+				  <connection-url>{{ keycloak_postgresql_connection_url }}</connection-url>
+				  <driver>postgresql</driver>
+				  <pool>
+				      <max-pool-size>20</max-pool-size>
+				  </pool>
+				  <security>
+				      <user-name>{{ keycloak_postgresql_user }}</user-name>
+				      <password>{{ keycloak_postgresql_password }}</password>
+				  </security>
+			  </datasource>
+			<drivers>
+				<driver name="postgresql" module="org.postgresql">
+				     <xa-datasource-class>org.postgresql.xa.PGXADataSource</xa-datasource-class>
+				 </driver>
+			</drivers>
+		</datasources>
+EOF
+
+awk -v template="$template" 'BEGIN {A = 1};/<datasources>/{A=0; print template };/.*/ { if ( A == 1) print $0};/<\/datasources>/{A=1}; ' {{ keycloak_home }}/standalone/configuration/standalone.xml > {{ keycloak_home }}/standalone/configuration/standalone1.xml
+
+sed -i 's/ExampleDS/KeycloakDS/g' {{ keycloak_home }}/standalone/configuration/standalone1.xml
+sed -i "s/$(echo -ne '\u200b')//g" {{ keycloak_home }}/standalone/configuration/standalone1.xml
+
+mv {{ keycloak_home }}/standalone/configuration/standalone1.xml {{ keycloak_home }}/standalone/configuration/standalone.xml
+chmod 755 {{ keycloak_home }}/standalone/configuration/standalone.xml
+
+echo "feature.account_api=enabled" >> {{ keycloak_home }}/standalone/configuration/profile.properties
+chmod 755 {{ keycloak_home }}/standalone/configuration/profile.properties

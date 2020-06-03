@@ -1,14 +1,15 @@
 ---
-- name: check for existing install...
+- name: Check for existing install
   become: yes
   become_user: root
   stat:
     path: '{{ keycloak_install_dir }}'
   changed_when: False
   register: keycloak_binary
+
 - when: not keycloak_binary.stat.exists
   block:
-    - name: download tgz
+    - name: Download keycloak tgz
       become: yes
       become_user: root
       get_url:
@@ -16,7 +17,10 @@
         dest: /tmp/{{ keycloak_tgz }}
         checksum: '{{ keycloak_checksum }}'
         mode: 0644
-    - name: unarchive
+        timeout: 60
+      retries: 3
+      delay: 10
+    - name: Unarchive keycloak tgz
       become: yes
       become_user: root
       unarchive:
@@ -25,14 +29,14 @@
         dest: '{{ keycloak_parent_install_dir }}'
         creates: '{{ keycloak_install_dir }}'
   always:
-    - name: cleanup...
+    - name: Cleanup...
       become: yes
       become_user: root
       file:
         path: /tmp/{{ keycloak_tgz }}
         state: absent
 
-- name: link
+- name: Create link
   become: yes
   become_user: root
   file:
@@ -40,13 +44,73 @@
     dest: '{{ keycloak_link_dir }}'
     state: link
 
-- name: add to path
+- name: Create keycloak user
   become: yes
   become_user: root
-  with_items:
-    - f: keycloak.sh
-      d: /etc/profile.d
-  template:
-    src: '{{ item.f }}.j2'
-    dest: '{{ item.d }}/{{ item.f }}'
-    mode: '{{ item.m|default("0644") }}'
+  tags:
+  - keyclock
+  user: name=keycloak
+
+- name: Keycloak target directory
+  become: yes
+  become_user: root
+  tags:
+  - keyclock
+  file: dest={{ keycloak_home }}
+        owner=keycloak
+        group=keycloak
+        state=directory
+        recurse=true
+
+- name: Keycloak log directory
+  become: yes
+  become_user: root
+  tags:
+  - keyclock
+  file: dest={{ keycloak_log_dir }}
+        mode=660
+        owner=keycloak
+        group=keycloak
+        state=directory
+
+- include_tasks: postgresql.yml
+
+- name: Check if admin is already created
+  become: yes
+  become_user: root
+  stat:
+    path: '{{ keycloak_home }}/.admin'
+  changed_when: False
+  register: result
+- when: not result.stat.exists
+  block:
+    - name: Add admin user
+      shell: "{{ keycloak_home }}/bin/add-user-keycloak.sh -r master -u {{ keycloak_admin_username }} -p {{ keycloak_admin_password }}"
+      become: yes
+      become_user: root
+    - name: mark that admin is created
+      become: yes
+      become_user: root
+      file: dest="{{ keycloak_home }}/.admin"
+        state=touch
+
+- name: Create keycloak service
+  become: yes
+  become_user: root
+  import_role:
+    name: robertdebock.service
+  vars:
+    service_list:
+      - name: keycloak
+        description: Keycloak service
+        start_command: "{{ keycloak_home }}/bin/standalone.sh"
+        user_name: keycloak
+        group_name: keycloak
+
+- name: start and enable tomcat instance
+  become: yes
+  become_user: root
+  service:
+    name: keycloak
+    state: started
+    enabled: yes

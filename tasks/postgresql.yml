@@ -1,0 +1,56 @@
+- name: Ensure postgresql module dir exists
+  become: yes
+  become_user: "root"
+  file:
+    path: "{{ postgresql_module_home }}"
+    state: "directory"
+    owner: keycloak
+    mode: "0755"
+  tags:
+    - keycloak
+
+- name: Download postgresql driver JAR
+  become: yes
+  become_user: "root"
+  get_url:
+    url: "{{ postgresql_driver_jar_download_url }}"
+    dest: "{{ postgresql_module_home }}/{{ postgresql_driver_jar_name }}.jar"
+    owner: keycloak
+    group: keycloak
+    timeout: 60
+  retries: 3
+  delay: 10
+
+- name: Copy module.xml config
+  become: yes
+  become_user: root
+  tags:
+    - keycloak
+  template:
+      owner=keycloak group=keycloak mode=755
+      src=module.xml.j2
+      dest={{ postgresql_module_home }}/module.xml
+
+- name: Copy datasource script
+  become: yes
+  become_user: keycloak
+  tags:
+    - keycloak
+  template:
+      owner=keycloak group=keycloak mode=755
+      src=datasource.sh.j2
+      dest={{ keycloak_home }}/standalone/datasource.sh
+
+- name: Update standalone.xml config
+  tags:
+    - keycloak
+  become: yes
+  become_user: keycloak
+  command: "{{ keycloak_home }}/standalone/datasource.sh"
+
+- name: Cleanup...
+  become: yes
+  become_user: keycloak
+  file:
+    path: "{{ keycloak_home }}/standalone/datasource.sh"
+    state: absent
