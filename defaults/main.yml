@@ -46,7 +46,7 @@ keycloak_nginx_sites:
       large_client_header_buffers: "8 64k"
       ssl:
         enabled: true
-        cert: "{{ keycloak_nginx_sl_cert_file }}"
+        cert: "{{ keycloak_nginx_ssl_cert_file }}"
         key:  "{{ keycloak_nginx_ssl_key_file }}"
         src_dir: "{{ keycloak_nginx_ssl_src_dir }}"
         conf: "{{ keycloak_site_name }}-ssl.conf"
