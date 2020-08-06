@@ -28,6 +28,11 @@ keycloak_nginx_certs_from_letsencrypt: true
 keycloak_nginx_http_site: "{{ keycloak_site_name }}-http"
 keycloak_nginx_https_site: "{{ keycloak_site_name }}-https"
 
+
+keycloak_nginx_proxy_buffer_size: "128k"
+keycloak_nginx_proxy_buffers: "4 256k"
+keycloak_nginx_proxy_busy_buffers_size: "256k;
+
 keycloak_nginx_server_names_hash_bucket_size: 64
 keycloak_nginx_sites:
   - server:
@@ -65,6 +70,9 @@ keycloak_nginx_sites:
           - X-Forwarded-For $proxy_add_x_forwarded_for
           - X-Forwarded-Host $server_name
           - X-Forwarded-Proto https
+        proxy_buffer_size: "{{ keycloak_nginx_proxy_buffer_size }}"
+        proxy_buffers: "{{ keycloak_nginx_proxy_buffers }}"
+        proxy_busy_buffers_size: "{{ keycloak_nginx_proxy_busy_buffers_size }}"
           
 keycloak_nginx_log_dir: "/var/log/nginx"
 keycloak_nginx_enabled_sites:
