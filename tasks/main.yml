@@ -1,5 +1,5 @@
 ---
-- name: check for existing install...
+- name: check for existing install at {{ keycloak_install_dir }}
   become: yes
   become_user: root
   stat:
@@ -8,31 +8,31 @@
   register: keycloak_binary
 - when: not keycloak_binary.stat.exists
   block:
-    - name: download tgz
+    - name: downloading {{ keycloak_tgz_url }}...
       become: yes
       become_user: root
       get_url:
         url: '{{ keycloak_tgz_url }}'
-        dest: /tmp/{{ keycloak_tgz }}
+        dest: '{{ keycloak_tmp_tgz }}'
         checksum: '{{ keycloak_checksum }}'
         mode: 0644
-    - name: unarchive
+    - name: unarchiving {{ keycloak_tmp_tgz }}
       become: yes
       become_user: root
       unarchive:
         remote_src: yes
-        src: /tmp/{{ keycloak_tgz }}
+        src: '{{ keycloak_tmp_tgz }}'
         dest: '{{ keycloak_parent_install_dir }}'
         creates: '{{ keycloak_install_dir }}'
   always:
-    - name: cleanup...
+    - name: rm {{ keycloak_tmp_tgz }}
       become: yes
       become_user: root
       file:
-        path: /tmp/{{ keycloak_tgz }}
+        path: '{{ keycloak_tmp_tgz }}'
         state: absent
 
-- name: link
+- name: linking {{ keycloak_link_dir }} to {{ keycloak_install_dir }}
   become: yes
   become_user: root
   file:
@@ -40,7 +40,7 @@
     dest: '{{ keycloak_link_dir }}'
     state: link
 
-- name: add to path
+- name: adding keycloak to the default bash login shell's path
   become: yes
   become_user: root
   with_items:

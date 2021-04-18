@@ -1,6 +1,7 @@
 ---
 keycloak_name: keycloak-{{ keycloak_ver }}
 keycloak_tgz: '{{ keycloak_name }}.tar.gz'
+keycloak_tmp_tgz: /tmp/{{ keycloak_tgz }}
 keycloak_tgz_url: '{{ keycloak_mirror }}/{{ keycloak_ver }}/{{ keycloak_tgz }}'
 keycloak_checksum: '{{ keycloak_checksums[keycloak_ver] }}'
 
