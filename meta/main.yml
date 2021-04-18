@@ -21,6 +21,7 @@ galaxy_info:
     - all
   - name: Debian
     versions:
+    - bullseye
     - buster
     - stretch
   - name: EL
@@ -31,9 +32,6 @@ galaxy_info:
     versions:
     - 31
     - 32
-  - name: Gentoo
-    versions:
-    - all
   - name: Ubuntu
     versions:
     - bionic
