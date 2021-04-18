@@ -1,6 +1,8 @@
 #!/usr/bin/env sh
 DIR=~/Downloads
-MIRROR=https://downloads.jboss.org/keycloak
+MIRROR=https://github.com/keycloak/keycloak/releases/download
+
+# https://github.com/keycloak/keycloak/releases/download/12.0.4/keycloak-12.0.4.tar.gz.sha1
 
 dl_ver() {
     local ver=$1
@@ -10,4 +12,4 @@ dl_ver() {
     printf "  '%s': sha1:%s\n" $ver $(curl -sSL $url)
 }
 
-dl_ver ${1:-11.0.0}
+dl_ver ${1:-12.0.4}
