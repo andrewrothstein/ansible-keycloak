@@ -3,7 +3,7 @@ dependencies:
   version: v1.2.0
 - openjdk_app: jre
   role: andrewrothstein.openjdk
-  version: v2.0.14
+  version: v2.0.15
 galaxy_info:
   author: Andrew Rothstein
   company: BlackRock
@@ -23,17 +23,14 @@ galaxy_info:
     versions:
     - bullseye
     - buster
-    - stretch
   - name: EL
     versions:
-    - 7
     - 8
   - name: Fedora
     versions:
-    - 31
-    - 32
+    - 34
+    - 35
   - name: Ubuntu
     versions:
     - bionic
     - focal
-    - xenial
