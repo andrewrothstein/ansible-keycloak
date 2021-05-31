@@ -1,5 +1,5 @@
 ---
-keycloak_ver: 12.0.4
+keycloak_ver: 13.0.1
 keycloak_mirror: https://github.com/keycloak/keycloak/releases/download
 
 keycloak_parent_install_dir: /usr/local
@@ -37,3 +37,5 @@ keycloak_checksums:
   '11.0.0': sha1:398a328a180682ee58b06df148938f5de710f89f
   # https://github.com/keycloak/keycloak/releases/download/12.0.4/keycloak-12.0.4.tar.gz.sha1
   '12.0.4': sha1:803e4f9f085b0560649c2486aa4378a66ddc08f0
+  # https://github.com/keycloak/keycloak/releases/download/13.0.1/keycloak-13.0.1.tar.gz.sha1
+  '13.0.1': sha1:940f300ecb8105c855528bd952fe5023001ec34d
