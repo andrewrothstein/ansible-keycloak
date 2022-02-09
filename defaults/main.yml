@@ -39,3 +39,21 @@ keycloak_checksums:
   '12.0.4': sha1:803e4f9f085b0560649c2486aa4378a66ddc08f0
   # https://github.com/keycloak/keycloak/releases/download/13.0.1/keycloak-13.0.1.tar.gz.sha1
   '13.0.1': sha1:940f300ecb8105c855528bd952fe5023001ec34d
+  # https://github.com/keycloak/keycloak/releases/download/14.0.0/keycloak-14.0.0.tar.gz.sha1
+  '14.0.0': sha1:894a7b4eee2f99f57b603c3ea7d28cd3420c0cce
+  # https://github.com/keycloak/keycloak/releases/download/15.0.0/keycloak-15.0.0.tar.gz.sha1
+  '15.0.0': sha1:8986ede748bd7cceef828669160e8b1de004be5f
+  # https://github.com/keycloak/keycloak/releases/download/15.0.1/keycloak-15.0.1.tar.gz.sha1
+  '15.0.1': sha1:55026a7b41b8d4aa6de151d77880373e5e709bb0
+  # https://github.com/keycloak/keycloak/releases/download/15.0.2/keycloak-15.0.2.tar.gz.sha1
+  '15.0.2': sha1:806f2ec9d64c9350d11cda809449239b60fae868
+  # https://github.com/keycloak/keycloak/releases/download/15.1.0/keycloak-15.1.0.tar.gz.sha1
+  '15.1.0': sha1:cb4613a8dd1987e6a47e7571af55f4e8cf3a54fc
+  # https://github.com/keycloak/keycloak/releases/download/15.1.1/keycloak-15.1.1.tar.gz.sha1
+  '15.1.1': sha1:914803c64b43941178acb6bdff9d99076fc7dccd
+  # https://github.com/keycloak/keycloak/releases/download/16.0.0/keycloak-16.0.0.tar.gz.sha1
+  '16.0.0': sha1:5efc0fdf404e8985e6a2eaa84daaa99e5440e327
+  # https://github.com/keycloak/keycloak/releases/download/16.1.0/keycloak-16.1.0.tar.gz.sha1
+  '16.1.0': sha1:876f64dea6e862543c6eb979450b4f1422025b33
+  # https://github.com/keycloak/keycloak/releases/download/16.1.1/keycloak-16.1.1.tar.gz.sha1
+  '16.1.1': sha1:4acc5d20bc3d26e25aa3bcffbc50ac9b76135c93
