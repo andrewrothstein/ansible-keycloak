@@ -1,5 +1,5 @@
 ---
-keycloak_ver: 13.0.1
+keycloak_ver: 16.1.1
 keycloak_mirror: https://github.com/keycloak/keycloak/releases/download
 
 keycloak_parent_install_dir: /usr/local
