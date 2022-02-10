@@ -1,6 +1,6 @@
 andrewrothstein.keycloak
 =========
-[![Build Status](https://travis-ci.org/andrewrothstein/ansible-keycloak.svg?branch=master)](https://travis-ci.org/andrewrothstein/ansible-keycloak)
+![Build Status](https://github.com/andrewrothstein/ansible-keycloak/actions/workflows/build.yml/badge.svg)
 
 Installs [KeyCloak](http://www.keycloak.org/)
 
