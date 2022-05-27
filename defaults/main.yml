@@ -57,3 +57,5 @@ keycloak_checksums:
   '16.1.0': sha1:876f64dea6e862543c6eb979450b4f1422025b33
   # https://github.com/keycloak/keycloak/releases/download/16.1.1/keycloak-16.1.1.tar.gz.sha1
   '16.1.1': sha1:4acc5d20bc3d26e25aa3bcffbc50ac9b76135c93
+  # https://github.com/keycloak/keycloak/releases/download/18.0.0/keycloak-18.0.0.tar.gz.sha1
+  '18.0.0': sha1:04f5c5816bdbc92da12889b1c6ece7e5ca4103bc
