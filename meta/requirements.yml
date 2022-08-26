@@ -1,5 +1,5 @@
 ---
 - name: andrewrothstein.unarchive-deps
-  version: v1.2.3
+  version: v1.2.4
 - name: andrewrothstein.temurin
-  version: 0.1.1
+  version: 1.0.2
