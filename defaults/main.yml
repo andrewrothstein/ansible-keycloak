@@ -1,5 +1,5 @@
 ---
-keycloak_ver: 16.1.1
+keycloak_ver: 19.0.1
 keycloak_mirror: https://github.com/keycloak/keycloak/releases/download
 
 keycloak_parent_install_dir: /usr/local
@@ -57,3 +57,5 @@ keycloak_checksums:
   '16.1.0': sha1:876f64dea6e862543c6eb979450b4f1422025b33
   # https://github.com/keycloak/keycloak/releases/download/16.1.1/keycloak-16.1.1.tar.gz.sha1
   '16.1.1': sha1:4acc5d20bc3d26e25aa3bcffbc50ac9b76135c93
+  # https://github.com/keycloak/keycloak/releases/download/19.0.1/keycloak-19.0.1.tar.gz.sha1
+  '19.0.1': sha1:b15576f141ab51b436b777b0fdbfcd722bda2f54
