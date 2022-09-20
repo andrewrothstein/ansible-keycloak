@@ -1,4 +1,10 @@
 ---
+- include_role:
+    name: andrewrothstein.unarchive-deps
+- include_role:
+    name: andrewrothstein.temurin
+  vars:
+    openjdk_app: jre
 - name: check for existing install at {{ keycloak_install_dir }}
   become: true
   become_user: root
