@@ -3,10 +3,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v4
       with:
+        cache: pip
         python-version: ${{ matrix.python-version }}
     - name: Install Python dependencies
       run: 'python -m pip install --upgrade pip
@@ -21,8 +22,8 @@ jobs:
     strategy:
       matrix:
         os:
-        - alpine_3.15
         - alpine_3.16
+        - alpine_3.17
         - alpine_edge
         - archlinux_latest
         - debian_bullseye
@@ -34,8 +35,8 @@ jobs:
         - ubuntu_bionic
         - ubuntu_focal
         - ubuntu_jammy
-        python-versions:
-        - '3.9'
+        python-version:
+        - '3.10'
 name: dcb
 'on':
 - push

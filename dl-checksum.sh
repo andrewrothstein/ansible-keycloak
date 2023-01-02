@@ -10,7 +10,7 @@ dl_ver() {
     local url=$MIRROR/$ver/keycloak-${ver}.tar.gz.sha1
 
     printf "  # %s\n" $url
-    printf "  '%s': sha1:%s\n" $ver $(curl -sSL $url)
+    printf "  '%s': sha1:%s\n" $ver $(curl -sSLf $url)
 }
 
-dl_ver ${1:-19.0.1}
+dl_ver ${1:-20.0.2}
