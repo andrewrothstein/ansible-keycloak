@@ -4,33 +4,32 @@ galaxy_info:
   company: BlackRock
   description: Installs keycloak
   galaxy_tags:
-  - sso
-  - secret
-  - key
+    - sso
+    - secret
+    - key
   license:
-  - MIT
+    - MIT
   min_ansible_version: 2.0
   platforms:
-  - name: Alpine
-    versions:
-    - all
-  - name: Archlinux
-    versions:
-    - all
-  - name: Debian
-    versions:
-    - bullseye
-    - buster
-  - name: EL
-    versions:
-    - 8
-    - 9
-  - name: Fedora
-    versions:
-    - 36
-    - 37
-  - name: Ubuntu
-    versions:
-    - bionic
-    - focal
-    - jammy
+    - name: Alpine
+      versions:
+        - all
+    - name: Archlinux
+      versions:
+        - all
+    - name: Debian
+      versions:
+        - bookworm
+        - bullseye
+    - name: EL
+      versions:
+        - 8
+        - 9
+    - name: Fedora
+      versions:
+        - 37
+        - 38
+    - name: Ubuntu
+      versions:
+        - focal
+        - jammy
