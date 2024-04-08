@@ -1,4 +1,13 @@
 ---
-- hosts: all
+- name: Testing andrewrothstein.keycloak
+  hosts: all
   roles:
-    - role: '{{playbook_dir}}'
+    - role: '{{ playbook_dir }}'
+  tasks:
+    - name: Executing 'kc.sh --version'
+      ansible.builtin.command: sh -lc 'kc.sh --version'
+      changed_when: false
+      register: keycloak_test_output
+    - name: Output of 'kc.sh --version'
+      ansible.builtin.debug:
+        msg: '{{ keycloak_test_output.stdout }}'

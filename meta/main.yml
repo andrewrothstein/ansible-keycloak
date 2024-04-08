@@ -7,14 +7,14 @@ galaxy_info:
     - sso
     - secret
     - key
-  license:
-    - MIT
-  min_ansible_version: 2.0
+  license: MIT
+  min_ansible_version: '2.0'
+  namespace: andrewrothstein
   platforms:
     - name: Alpine
       versions:
         - all
-    - name: Archlinux
+    - name: ArchLinux
       versions:
         - all
     - name: Debian
@@ -23,13 +23,14 @@ galaxy_info:
         - bullseye
     - name: EL
       versions:
-        - 8
-        - 9
+        - '8'
+        - '9'
     - name: Fedora
       versions:
-        - 37
-        - 38
+        - '38'
+        - '39'
     - name: Ubuntu
       versions:
         - focal
         - jammy
+  role_name: keycloak
