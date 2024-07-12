@@ -1,7 +1,4 @@
 ---
-- name: Installing andrewrothstein.unarchivedeps
-  ansible.builtin.include_role:
-    name: andrewrothstein.unarchivedeps
 - name: Installing andrewrothstein.temurin
   ansible.builtin.include_role:
     name: andrewrothstein.temurin
@@ -25,6 +22,9 @@
         dest: '{{ keycloak_tmp_tgz }}'
         checksum: '{{ keycloak_checksum }}'
         mode: '644'
+    - name: Installing andrewrothstein.unarchivedeps
+      ansible.builtin.include_role:
+        name: andrewrothstein.unarchivedeps
     - name: Unarchiving {{ keycloak_tmp_tgz }}
       become: true
       become_user: root

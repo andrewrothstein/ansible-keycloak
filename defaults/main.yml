@@ -1,5 +1,5 @@
 ---
-keycloak_ver: 24.0.2
+keycloak_ver: 25.0.1
 keycloak_mirror: https://github.com/keycloak/keycloak/releases/download
 
 keycloak_parent_install_dir: /usr/local
@@ -65,3 +65,5 @@ keycloak_checksums:
   '22.0.1': sha1:eea6076b99a78f88104e3a08618f4422d0ff16e2
   # https://github.com/keycloak/keycloak/releases/download/24.0.2/keycloak-24.0.2.tar.gz.sha1
   '24.0.2': sha1:8b23e722df38fa7661a8eeb6e032c72c9e0818a9
+  # https://github.com/keycloak/keycloak/releases/download/25.0.1/keycloak-25.0.1.tar.gz.sha1
+  '25.0.1': sha1:8109ac7505c6f70763c247b5e52be4667585b0ce
