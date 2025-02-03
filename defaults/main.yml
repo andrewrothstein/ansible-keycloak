@@ -1,5 +1,5 @@
 ---
-keycloak_ver: 26.0.6
+keycloak_ver: 26.1.0
 keycloak_mirror: https://github.com/keycloak/keycloak/releases/download
 
 keycloak_parent_install_dir: /usr/local
@@ -75,3 +75,5 @@ keycloak_checksums:
   '26.0.5': sha1:4e3201ed7785166af7342eb757a462e691df9db6
   # https://github.com/keycloak/keycloak/releases/download/26.0.6/keycloak-26.0.6.tar.gz.sha1
   '26.0.6': sha1:083cc470c8f85862dd985361fc856357a62db4bb
+  # https://github.com/keycloak/keycloak/releases/download/26.1.0/keycloak-26.1.0.tar.gz.sha1
+  '26.1.0': sha1:26f54b126f9cb4a2bf49175b83717fe92ffbba48
