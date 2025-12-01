@@ -1,5 +1,5 @@
 ---
-keycloak_ver: 26.2.0
+keycloak_ver: 26.4.6
 keycloak_mirror: https://github.com/keycloak/keycloak/releases/download
 
 keycloak_parent_install_dir: /usr/local
@@ -79,3 +79,37 @@ keycloak_checksums:
   '26.1.0': sha1:26f54b126f9cb4a2bf49175b83717fe92ffbba48
   # https://github.com/keycloak/keycloak/releases/download/26.2.0/keycloak-26.2.0.tar.gz.sha1
   '26.2.0': sha1:19e592ba75d581f22b0756dba86b68d82605893e
+  # https://github.com/keycloak/keycloak/releases/download/26.2.1/keycloak-26.2.1.tar.gz.sha1
+  '26.2.1': sha1:191a9bc0313dba627282857ca62227a1f9ec7277
+  # https://github.com/keycloak/keycloak/releases/download/26.2.2/keycloak-26.2.2.tar.gz.sha1
+  '26.2.2': sha1:42c63e3c0fbc2782ce3b31c08e2089bd928ca121
+  # https://github.com/keycloak/keycloak/releases/download/26.2.3/keycloak-26.2.3.tar.gz.sha1
+  '26.2.3': sha1:40423b1128286ddda3d97f7c5f811d9af75dfa26
+  # https://github.com/keycloak/keycloak/releases/download/26.2.4/keycloak-26.2.4.tar.gz.sha1
+  '26.2.4': sha1:814b9b3e149e90ca1e6eda2963a72d480f3bd840
+  # https://github.com/keycloak/keycloak/releases/download/26.2.5/keycloak-26.2.5.tar.gz.sha1
+  '26.2.5': sha1:b0f6aa48625a090713ca0964cad47846af84ebc3
+  # https://github.com/keycloak/keycloak/releases/download/26.3.0/keycloak-26.3.0.tar.gz.sha1
+  '26.3.0': sha1:0593485435b15d08337a573c85dcf0bb2c6c9638
+  # https://github.com/keycloak/keycloak/releases/download/26.3.1/keycloak-26.3.1.tar.gz.sha1
+  '26.3.1': sha1:a0c5b70bf7b638c9eaf85c86d5d4774d6d4586a6
+  # https://github.com/keycloak/keycloak/releases/download/26.3.2/keycloak-26.3.2.tar.gz.sha1
+  '26.3.2': sha1:3568d70a13866c35e4aafa3bcadac70b0945afeb
+  # https://github.com/keycloak/keycloak/releases/download/26.3.3/keycloak-26.3.3.tar.gz.sha1
+  '26.3.3': sha1:054c70005ca9789b97acb8407fd043df6ed90f03
+  # https://github.com/keycloak/keycloak/releases/download/26.3.4/keycloak-26.3.4.tar.gz.sha1
+  '26.3.4': sha1:41e333c551580a7d1ef73d59716234afdbb367e0
+  # https://github.com/keycloak/keycloak/releases/download/26.3.5/keycloak-26.3.5.tar.gz.sha1
+  '26.3.5': sha1:8ab57bc4b844e95de37128cbfadf791e605f45e5
+  # https://github.com/keycloak/keycloak/releases/download/26.4.0/keycloak-26.4.0.tar.gz.sha1
+  '26.4.0': sha1:b58fa285f6bd761da13bf11fba29c9d281ea4296
+  # https://github.com/keycloak/keycloak/releases/download/26.4.1/keycloak-26.4.1.tar.gz.sha1
+  '26.4.1': sha1:128c06f257b82e90d2c3301b888ede9a59c06820
+  # https://github.com/keycloak/keycloak/releases/download/26.4.2/keycloak-26.4.2.tar.gz.sha1
+  '26.4.2': sha1:c0a967c43ff9fb950c2b5851f75f52326cd9f7ed
+  # https://github.com/keycloak/keycloak/releases/download/26.4.4/keycloak-26.4.4.tar.gz.sha1
+  '26.4.4': sha1:d19f48eaa586f19d8e7821fd1491491f401b8dc2
+  # https://github.com/keycloak/keycloak/releases/download/26.4.5/keycloak-26.4.5.tar.gz.sha1
+  '26.4.5': sha1:a0c40be94a758bc7b2c6c7214088e26e75c71bdb
+  # https://github.com/keycloak/keycloak/releases/download/26.4.6/keycloak-26.4.6.tar.gz.sha1
+  '26.4.6': sha1:547bbd151d4315c182369631f30427169a3928cd

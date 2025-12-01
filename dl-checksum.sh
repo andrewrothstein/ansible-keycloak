@@ -13,4 +13,4 @@ dl_ver() {
     printf "  '%s': sha1:%s\n" $ver $(curl -sSLf $url)
 }
 
-dl_ver ${1:-26.2.0}
+dl_ver ${1:-26.4.6}
